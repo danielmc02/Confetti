@@ -1,7 +1,7 @@
 package com.example.confetti.screens
 
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.example.confetti.screens.login_components.LoginButton
+import com.example.confetti.screens.login_components.LoginComposable
 import com.example.confetti.screens.login_components.UserNameTextField
 import com.example.confetti.ui.theme.ConfettiTheme
 
@@ -68,7 +68,7 @@ fun LoginScreen(modifier: Modifier, ){
                     horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                     //Body for text fields
-                    UserNameTextField()
+                    LoginComposable()
                 }
                 Row(
                     modifier
@@ -78,7 +78,7 @@ fun LoginScreen(modifier: Modifier, ){
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center) {
                     //Body for Sign in button
-                    LoginButton()
+                    UserNameTextField()
                 }
             }
             Row(
@@ -106,7 +106,7 @@ fun LoginScreen(modifier: Modifier, ){
     }
 }
 
-@Preview(uiMode = UI_MODE_NIGHT_YES)
+@Preview(uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun PreviewScreen(){
     LoginScreen(modifier = Modifier)
