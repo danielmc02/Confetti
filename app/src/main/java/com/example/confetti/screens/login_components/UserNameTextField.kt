@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.material.TextFieldDefaults
@@ -19,17 +20,42 @@ import androidx.compose.ui.unit.dp
 fun UserNameTextField(){
     var userName by remember { mutableStateOf("") }
 
-    OutlinedTextField(value = userName,
+    OutlinedTextField(singleLine = true, maxLines = 1, value = userName,
         onValueChange = {it -> userName = it},
-        label = { Text(text = "Email")},
+        label = { Text(text = "Email or username")},
         colors = TextFieldDefaults.outlinedTextFieldColors(
             unfocusedBorderColor = Color.Transparent,
             focusedBorderColor = Color.Transparent,
-            unfocusedLabelColor = Color.Black,
-            disabledLabelColor = Color.Black,
-            focusedLabelColor = Color.Black,
+            unfocusedLabelColor = MaterialTheme.colors.onBackground,
+            disabledLabelColor = Color.Gray,
+            focusedLabelColor = MaterialTheme.colors.onBackground,
             placeholderColor = Color.Red,
-            textColor = Color.Black
+            cursorColor = MaterialTheme.colors.onBackground,
+            textColor = MaterialTheme.colors.onBackground
+        ), modifier = Modifier,
+        shape = RoundedCornerShape(30.dp),
+
+
+
+    )
+}
+
+@Composable
+fun PasswordTextField(){
+    var userName by remember { mutableStateOf("") }
+
+    OutlinedTextField(singleLine = true, maxLines = 1, value = userName,
+        onValueChange = {it -> userName = it},
+        label = { Text(text = "Password")},
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            unfocusedBorderColor = Color.Transparent,
+            focusedBorderColor = Color.Transparent,
+            unfocusedLabelColor = MaterialTheme.colors.onBackground,
+            disabledLabelColor = Color.Gray,
+            focusedLabelColor = MaterialTheme.colors.onBackground,
+            placeholderColor = Color.Red,
+            cursorColor = MaterialTheme.colors.onBackground,
+            textColor = MaterialTheme.colors.onBackground
         ), modifier = Modifier,
         shape = RoundedCornerShape(30.dp),
 
@@ -37,7 +63,7 @@ fun UserNameTextField(){
 
 
 
-    )
+        )
 }
 
 @Preview

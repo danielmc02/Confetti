@@ -1,10 +1,7 @@
 package com.example.confetti.screens.login_components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -17,19 +14,21 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun LoginButton(){
     Button(onClick = { /*TODO*/ },
     modifier = Modifier
-        .clip(RoundedCornerShape(10.dp))
-        .width(100.dp),
+        .clip(RoundedCornerShape(25.dp))
+        .height(50.dp)
+        .width(250.dp),
         colors = ButtonDefaults.buttonColors(
             backgroundColor = Color.Blue,
             contentColor = MaterialTheme.colors.onBackground
         )
         ) {
-        Text(text = "Login")
+        Text(text = "Login", color = Color.White, fontSize = 22.sp)
     }
 }
 

@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
@@ -63,23 +64,14 @@ fun LoginScreen(modifier: Modifier, ){
                 Column(
                     modifier
                         .fillMaxWidth()
-                        .weight(.7f),
-                    verticalArrangement = Arrangement.SpaceBetween,
+                        .weight(.9f),
+                    verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                     //Body for text fields
                     LoginComposable()
                 }
-                Row(
-                    modifier
-                        .fillMaxWidth()
-                        .weight(.2f)
-                        .background(Color.Gray),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center) {
-                    //Body for Sign in button
-                    UserNameTextField()
-                }
+
             }
             Row(
                 modifier
@@ -91,11 +83,20 @@ fun LoginScreen(modifier: Modifier, ){
                 Text(text = buildAnnotatedString {
                        withStyle(
                             style = SpanStyle(
-                                textDecoration = TextDecoration.Underline
+                                textDecoration = TextDecoration.None,
+                                color = MaterialTheme.colors.onBackground.copy(alpha = .8f)
                             )
                        ){
                            append("Don't have an account?")
                        }
+                    withStyle(
+                        style = SpanStyle(
+                            textDecoration = TextDecoration.None,
+                            color = MaterialTheme.colors.onBackground
+                        )
+                    ){
+                        append(" Sign up")
+                    }
                 },
                     fontSize = 20.sp,
                     color = MaterialTheme.colors.onBackground,
