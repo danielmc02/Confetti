@@ -2,8 +2,10 @@ package com.example.confetti.screens
 
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -72,11 +74,13 @@ fun LoginScreen(modifier: Modifier, ){
                 //Dont have an account, sign up
 
             }
+
+
         }
     }
 }
 
-@Preview(uiMode = UI_MODE_NIGHT_NO)
+@Preview(uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun PreviewScreen(){
     LoginScreen(modifier = Modifier)
