@@ -1,5 +1,7 @@
 package com.example.confetti.screens.login_components
 
+import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -106,14 +108,17 @@ fun LoginFormComposable() {
     }
 }
 
-@Preview
+@Preview(uiMode = UI_MODE_NIGHT_NO)
 @Composable
 fun fulsce(){
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier
-        .fillMaxSize()
-        .background(
-            White
-        )) {
-        LoginFormComposable()
+    ConfettiTheme() {
+        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center, modifier = Modifier
+            .fillMaxSize()
+            .background(
+                color = MaterialTheme.colors.background
+            )) {
+            LoginFormComposable()
+        }
     }
+
 }
