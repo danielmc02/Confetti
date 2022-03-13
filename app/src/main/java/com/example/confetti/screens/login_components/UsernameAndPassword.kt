@@ -1,7 +1,6 @@
 package com.example.confetti.screens.login_components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,18 +14,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.confetti.R
 import com.example.confetti.ui.theme.ConfettiTheme
 import com.example.confetti.ui.theme.Grey
 
@@ -101,7 +95,9 @@ fun LoginFormComposable() {
             },
                 fontSize = 15.sp,
                 color = MaterialTheme.colors.onBackground,
-                modifier = Modifier.clickable {  }
+                modifier = Modifier.clickable {
+
+                }
             )
         }
 
