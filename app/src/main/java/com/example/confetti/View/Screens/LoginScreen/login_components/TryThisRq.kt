@@ -1,4 +1,4 @@
-package com.example.confetti.screens.login_components
+package com.example.confetti.View.Screens.LoginScreen.login_components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

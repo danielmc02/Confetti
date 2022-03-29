@@ -1,4 +1,4 @@
-package com.example.confetti.screens
+package com.example.confetti.View.d
 
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -14,8 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.confetti.R
-import com.example.confetti.screens.login_components.FullRed
-import com.example.confetti.screens.login_components.LoginFormComposable
+import com.example.confetti.View.Screens.LoginScreen.login_components.FullRed
 import com.example.confetti.ui.theme.ConfettiTheme
 
 
@@ -66,7 +65,7 @@ fun LoginScreen(modifier: Modifier, ){
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             //Body for text fields
-                            LoginFormComposable()
+                            //LoginFormComposable()
                         }
 
                     }
