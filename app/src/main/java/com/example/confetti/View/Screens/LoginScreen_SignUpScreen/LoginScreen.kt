@@ -8,13 +8,17 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.confetti.R
-import com.example.confetti.View.Screens.LoginScreen.login_components.FullRed
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.FullRed
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.LoginTextField
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.PasswordTextField
+import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
 
 
@@ -24,7 +28,7 @@ val CustomFont = FontFamily(
 
 @ExperimentalMaterialApi
 @Composable
-fun LoginScreen(modifier: Modifier, ){
+fun LoginScreen(modifier: Modifier){
 
     ConfettiTheme() {
 
@@ -40,7 +44,7 @@ fun LoginScreen(modifier: Modifier, ){
                     Row(
                         modifier
                             .fillMaxWidth()
-                            .weight(.4f),
+                            .weight(.2f),
                         verticalAlignment = Alignment.Bottom,
                         horizontalArrangement = Arrangement.Center) {
                         //Top-Title
@@ -54,7 +58,8 @@ fun LoginScreen(modifier: Modifier, ){
                     Column(
                         modifier
                             .fillMaxWidth()
-                            .weight(.3f)) {
+                            .weight(.5f)
+                            .background(Color.Transparent)) {
                         //Body for sign in components
 
                         Column(
@@ -65,6 +70,8 @@ fun LoginScreen(modifier: Modifier, ){
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             //Body for text fields
+                            LoginTextField(LoginSignUpViewModel())
+                            PasswordTextField(LoginSignUpViewModel())
                             //LoginFormComposable()
                         }
 
@@ -72,7 +79,7 @@ fun LoginScreen(modifier: Modifier, ){
                     Row(
                         modifier
                             .fillMaxWidth()
-                            .weight(.2f),
+                            .weight(.3f),
                         verticalAlignment = Alignment.Bottom,
                         horizontalArrangement = Arrangement.Start) {
                         //Dont have an account, sign up

@@ -14,8 +14,8 @@ fun MainScreen(){
 
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "LoginScreen" ){
-        composable("LoginScreen"){
+    NavHost(navController = navController, startDestination = "LoginScreen_SignUpScreen" ){
+        composable("LoginScreen_SignUpScreen"){
             LoginScreen(modifier = Modifier)
         }
     }
