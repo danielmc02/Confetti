@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.confetti.R
-import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.FullRed
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.SignUpScreen
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.LoginTextField
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.PasswordTextField
 import com.example.confetti.ViewModels.LoginSignUpViewModel
@@ -34,7 +34,9 @@ fun LoginScreen(modifier: Modifier){
 
 
             val drawerState = rememberBottomDrawerState(BottomDrawerValue.Closed)
-            BottomDrawer(drawerState = drawerState,gesturesEnabled = true, drawerContent = { FullRed()}){
+            BottomDrawer(drawerState = drawerState,gesturesEnabled = true, drawerContent = { SignUpScreen(
+                LoginSignUpViewModel()
+            ) }){
                 Column(
 
                     modifier
