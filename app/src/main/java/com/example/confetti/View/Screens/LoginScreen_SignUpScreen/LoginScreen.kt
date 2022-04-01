@@ -33,7 +33,7 @@ fun LoginScreen(modifier: Modifier){
     ConfettiTheme() {
 
 
-            val drawerState = rememberBottomDrawerState(BottomDrawerValue.Closed)
+            val drawerState = rememberBottomDrawerState(BottomDrawerValue.Open)
             BottomDrawer(drawerState = drawerState,gesturesEnabled = true, drawerContent = { SignUpScreen(
                 LoginSignUpViewModel()
             ) }){

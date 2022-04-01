@@ -1,13 +1,8 @@
 package com.example.confetti.ViewModels
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.compose.runtime.*
 
 class LoginSignUpViewModel: ViewModel() {
 
@@ -29,5 +24,23 @@ class LoginSignUpViewModel: ViewModel() {
         {
             _currentPasswordText.value = string
         }
+
+    //Start of sign up components
+
+    private val _currentSignUpUsernameText:MutableLiveData<String> = MutableLiveData("")
+    val currentSignUpUsernameText:LiveData<String> = _currentSignUpUsernameText
+    //Function for changing the references value
+    fun updateSignUpUsernameText(string:String)
+    {
+        _currentSignUpUsernameText.value = string
+    }
+
+    private val _currentSignUpPasswordText:MutableLiveData<String> = MutableLiveData("")
+    val currentSignUpPasswordText:LiveData<String> = _currentSignUpPasswordText
+    //Function for changing the references value
+    fun updateSignUpPasswordText(string:String)
+    {
+        _currentSignUpPasswordText.value = string
+    }
 }
 

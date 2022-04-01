@@ -10,6 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignUpButton
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignUpPasswordTextField
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignUpUsernameTextField
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
 
@@ -34,8 +37,14 @@ fun SignUpScreen(loginSignUpViewModel: LoginSignUpViewModel)
                 fontSize = 32.sp, )
 
             }
-            Column(modifier = Modifier.weight(.8f)) {
-                
+            Column(horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .weight(.8f)
+                    .fillMaxWidth()) {
+                SignUpUsernameTextField(LoginSignUpViewModel())
+                SignUpPasswordTextField(LoginSignUpViewModel())
+                SignUpButton(LoginSignUpViewModel())
             }
 
         }

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -101,4 +100,47 @@ fun PasswordTextField(loginSignUpViewModel: LoginSignUpViewModel){
         )
     }
 
+}
+
+
+
+@Composable
+fun SignUpUsernameTextField(loginSignUpViewModel: LoginSignUpViewModel)
+{
+    var text by remember{ mutableStateOf("")}
+
+    TextField(value = text,
+        onValueChange = { newText:String ->
+        text = newText
+        loginSignUpViewModel.updateSignUpUsernameText(text)
+        println(loginSignUpViewModel.currentSignUpUsernameText)
+
+    },
+        singleLine = true,
+    placeholder = { Text(text = "Email")})
+}
+
+@Composable
+fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
+{
+    var text by remember{ mutableStateOf("")}
+
+    TextField(value = text,
+        onValueChange = { newText:String ->
+            text = newText
+            loginSignUpViewModel.updateSignUpPasswordText(text)
+            println(loginSignUpViewModel.currentSignUpPasswordText)
+
+        },
+        singleLine = true,
+        placeholder = { Text(text = "Password")})
+}
+
+
+@Composable
+fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
+{
+    OutlinedButton(onClick = { /*TODO*/ }) {
+        Text(text = "Sign Up")
+    }
 }
