@@ -4,6 +4,7 @@ package com.example.confetti.View.d
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -13,6 +14,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.confetti.R
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.SignUpScreen
@@ -34,8 +36,9 @@ fun LoginScreen(modifier: Modifier){
 
 
             val drawerState = rememberBottomDrawerState(BottomDrawerValue.Open)
-            BottomDrawer(drawerState = drawerState,gesturesEnabled = true, drawerContent = { SignUpScreen(
+            BottomDrawer(drawerShape = CutCornerShape(20.dp),drawerState = drawerState,gesturesEnabled = true, drawerContent = { SignUpScreen(
                 LoginSignUpViewModel()
+
             ) }){
                 Column(
 
