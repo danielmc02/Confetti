@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.confetti.View.d.LoginScreen
+import com.example.confetti.ViewModels.LoginSignUpViewModel
 
 @ExperimentalMaterialApi
 @Composable
@@ -16,7 +17,7 @@ fun MainScreen(){
 
     NavHost(navController = navController, startDestination = "LoginScreen_SignUpScreen" ){
         composable("LoginScreen_SignUpScreen"){
-            LoginScreen(modifier = Modifier)
+            LoginScreen(modifier = Modifier, LoginSignUpViewModel())
         }
     }
 }

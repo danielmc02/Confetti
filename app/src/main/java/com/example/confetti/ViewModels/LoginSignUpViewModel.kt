@@ -1,5 +1,7 @@
 package com.example.confetti.ViewModels
 
+import androidx.compose.material.BottomDrawerValue
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -41,6 +43,27 @@ class LoginSignUpViewModel: ViewModel() {
     fun updateSignUpPasswordText(string:String)
     {
         _currentSignUpPasswordText.value = string
+    }
+
+    //For changing the drawer state
+    @OptIn(ExperimentalMaterialApi::class)
+    private val _drawerState:MutableLiveData<BottomDrawerValue> = MutableLiveData(BottomDrawerValue.Closed)  //Global initial value for bottom drawer starting with closed
+    @OptIn(ExperimentalMaterialApi::class)
+    val drawerState: LiveData<BottomDrawerValue> = _drawerState
+    //Change the State to expand or vice versa
+    @OptIn(ExperimentalMaterialApi::class)
+    fun changeDrawerState()
+    {
+        if(_drawerState.value == BottomDrawerValue.Closed || true)
+        {
+            _drawerState.value = BottomDrawerValue.Expanded
+            println("OH HELLO the current drawer state value is " + drawerState.value.toString())
+
+        }
+        else
+        {
+            _drawerState.value = BottomDrawerValue.Closed
+        }
     }
 }
 

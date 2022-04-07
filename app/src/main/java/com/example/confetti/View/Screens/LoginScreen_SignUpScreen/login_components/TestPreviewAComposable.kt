@@ -140,7 +140,10 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 @Composable
 fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
 {
-    OutlinedButton(onClick = { /*TODO*/ }) {
+    OutlinedButton(onClick = {
+        loginSignUpViewModel.changeDrawerState()
+    }) {
         Text(text = "Sign Up")
     }
 }
+
