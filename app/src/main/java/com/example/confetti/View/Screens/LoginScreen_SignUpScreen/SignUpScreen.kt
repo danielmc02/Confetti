@@ -3,6 +3,7 @@ package com.example.confetti.View.Screens.LoginScreen_SignUpScreen
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +22,9 @@ import com.example.confetti.ui.theme.ConfettiTheme
 fun SignUpScreen(loginSignUpViewModel: LoginSignUpViewModel)
 {
     ConfettiTheme() {
+        Scaffold() { nativePadding ->
+
+        }
         Column(modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colors.background)) {//Whole screen
@@ -35,6 +39,7 @@ fun SignUpScreen(loginSignUpViewModel: LoginSignUpViewModel)
                     .weight(.1f)) {
                 Text(text = "Sign Up", color = MaterialTheme.colors.onBackground,
                 fontSize = 32.sp, )
+
 
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally,

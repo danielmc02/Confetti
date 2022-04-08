@@ -4,8 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.TextFieldDefaults.MinWidth
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,7 +35,7 @@ fun FullScreen(){
 fun LoginTextField(loginSignUpViewModel: LoginSignUpViewModel){
     ConfettiTheme() {
         var text by remember { mutableStateOf("") } // Temporary state holder
-        OutlinedTextField(
+        OutlinedTextField(modifier = Modifier.width(MinWidth),
             value = text,
             onValueChange = { newText:String ->
                 text = newText // Assigning temporary state holder value
@@ -41,6 +43,7 @@ fun LoginTextField(loginSignUpViewModel: LoginSignUpViewModel){
                 println(loginSignUpViewModel.currentUsernameText.value.toString()) // Outputs to terminal to verify view-model assignment success
             },
             shape = RoundedCornerShape(20.dp),
+            maxLines = 1,
             singleLine = true,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 textColor = MaterialTheme.colors.onBackground,
@@ -70,7 +73,7 @@ fun LoginTextField(loginSignUpViewModel: LoginSignUpViewModel){
 fun PasswordTextField(loginSignUpViewModel: LoginSignUpViewModel){
     ConfettiTheme() {
         var text by remember { mutableStateOf("") } // Temporary state holder
-        OutlinedTextField(
+        OutlinedTextField(modifier = Modifier.width(MinWidth),
             value = text,
             onValueChange = { newText:String ->
                 text = newText // Assigning temporary state holder value
@@ -78,6 +81,7 @@ fun PasswordTextField(loginSignUpViewModel: LoginSignUpViewModel){
                 println(loginSignUpViewModel.currentPasswordText.value.toString()) // Outputs to terminal to verify view-model assignment success
             },
             shape = RoundedCornerShape(20.dp),
+            maxLines = 1,
             singleLine = true,
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 textColor = MaterialTheme.colors.onBackground,
@@ -141,7 +145,7 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
 {
     OutlinedButton(onClick = {
-        loginSignUpViewModel.changeDrawerState()
+
     }) {
         Text(text = "Sign Up")
     }
