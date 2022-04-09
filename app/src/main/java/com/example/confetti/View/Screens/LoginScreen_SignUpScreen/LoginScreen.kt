@@ -39,8 +39,8 @@ fun LoginScreen(modifier: Modifier, loginSignUpViewModel: LoginSignUpViewModel){
 
     ConfettiTheme() {
         val scope = rememberCoroutineScope()
-        val drawerState = rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
-            BottomDrawer(drawerState = drawerState  ,gesturesEnabled = false, drawerContent = { SignUpScreen(loginSignUpViewModel = LoginSignUpViewModel()) })
+        var drawerState = rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
+            BottomDrawer(drawerState =  drawerState ,gesturesEnabled = false, drawerContent = { SignUpScreen(LoginSignUpViewModel(), drawerState = drawerState, scope = scope) })
             {
                 Column(
 
@@ -92,10 +92,10 @@ fun LoginScreen(modifier: Modifier, loginSignUpViewModel: LoginSignUpViewModel){
                                     append("Don't have an account?")
                                 }
                             })
-                            Button(onClick = { scope.launch { drawerState.expand() } }) {
 
 
-                            }
+
+
                         }
 
                     }
@@ -123,4 +123,5 @@ fun LoginScreen(modifier: Modifier, loginSignUpViewModel: LoginSignUpViewModel){
 fun PreviewScreen(){
     LoginScreen(modifier = Modifier, LoginSignUpViewModel())
 }
+
 

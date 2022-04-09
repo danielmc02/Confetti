@@ -1,5 +1,6 @@
 package com.example.confetti.ViewModels
 
+import androidx.compose.material.BottomDrawerState
 import androidx.compose.material.BottomDrawerValue
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.lifecycle.LiveData
@@ -46,14 +47,43 @@ class LoginSignUpViewModel: ViewModel() {
     }
 
     //For changing the drawer state
-
+/*
     @OptIn(ExperimentalMaterialApi::class)
-    private val _drawerState:MutableLiveData<BottomDrawerValue> = MutableLiveData(BottomDrawerValue.Closed)  //Global initial value for bottom drawer starting with closed
+    val _drawerState:MutableLiveData<BottomDrawerValue> = MutableLiveData(BottomDrawerValue.Closed)  //Global initial value for bottom drawer starting with closed
 
     @OptIn(ExperimentalMaterialApi::class)
     val drawerState: LiveData<BottomDrawerValue> = _drawerState
+*/
+    @OptIn(ExperimentalMaterialApi::class)
+    private val _drawerState: LiveData<BottomDrawerState> = MutableLiveData(BottomDrawerState(BottomDrawerValue.Closed))
+
+    @OptIn(ExperimentalMaterialApi::class)
+    val drawerState: LiveData<BottomDrawerState> = _drawerState
+   /*
+    fun StateChangeDrawerViaCorotines():BottomDrawerState
+    {
+        println("PPPPPPPPPPPPPPPP")
+
+        return OpenCloseDrawer()
+    }
+*/
 
 
+
+    @OptIn(ExperimentalMaterialApi::class)
+    fun OpenCloseDrawer(state: BottomDrawerState):BottomDrawerValue
+    {
+        if(state == BottomDrawerState(BottomDrawerValue.Closed))
+        {
+            println("AHHHHHHHHHHHHHHHHH")
+            return BottomDrawerValue.Expanded
+        }
+        else
+        {
+            println("cccccccccccc")
+            return BottomDrawerValue.Expanded
+        }
+    }
 
 }
 
