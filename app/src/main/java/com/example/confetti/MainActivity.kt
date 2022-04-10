@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ConfettiTheme {
                 // A surface container using the 'background' color from the theme
-                MainScreen()
+                MainScreen(auth = auth)
 
             }
         }
