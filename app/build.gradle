@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.gms.google-services' // Adding Firebase
 }
 
 android {
@@ -47,10 +48,17 @@ android {
 
 dependencies {
 
+    //Adding Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.2.1') //Firebase BOM
+    implementation 'com.google.firebase:firebase-analytics-ktx' // Firebase SDK for Google Analytics
 
     //For Navigation
     def nav_version = "2.4.1"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //For Email/Password Auth Via Firebase
+    implementation platform('com.google.firebase:firebase-bom:29.3.0') // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-auth-ktx' // Declare the dependency for the Firebase Authentication library
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation "androidx.compose.ui:ui:$compose_version"

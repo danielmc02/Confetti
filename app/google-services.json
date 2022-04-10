@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1519517385",
+    "project_id": "confetti-ccb07",
+    "storage_bucket": "confetti-ccb07.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1519517385:android:d96346d86f2094f5fa5718",
+        "android_client_info": {
+          "package_name": "com.example.confetti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1519517385-hp0jjan7gmhhso24g5iolv4pshhkk51g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.confetti",
+            "certificate_hash": "6ed838bbad8d52de668ac297d7332298c900bcd6"
+          }
+        },
+        {
+          "client_id": "1519517385-t5d3ve0ceebah3ndv47iru09nbib6tmi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyPqWjFwVsLH_rSkMxAOIpFhGDC-rfdKY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1519517385-t5d3ve0ceebah3ndv47iru09nbib6tmi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
