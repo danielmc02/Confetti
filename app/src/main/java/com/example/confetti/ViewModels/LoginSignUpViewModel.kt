@@ -1,15 +1,21 @@
 package com.example.confetti.ViewModels
 
-import androidx.compose.material.BottomDrawerState
-import androidx.compose.material.BottomDrawerValue
-import androidx.compose.material.ExperimentalMaterialApi
+import android.app.Activity
+import android.content.ContentValues.TAG
+import android.util.Log
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginSignUpViewModel: ViewModel() {
-
     // For the current Username
+    private lateinit var auth: FirebaseAuth
+
     private val _currentUsernameText:MutableLiveData<String> = MutableLiveData("") // When the view updates, it passes it here
     val currentUsernameText:LiveData<String> = _currentUsernameText // Act as the actual which copies the reference
 
@@ -46,44 +52,39 @@ class LoginSignUpViewModel: ViewModel() {
         _currentSignUpPasswordText.value = string
     }
 
-    //For changing the drawer state
-/*
-    @OptIn(ExperimentalMaterialApi::class)
-    val _drawerState:MutableLiveData<BottomDrawerValue> = MutableLiveData(BottomDrawerValue.Closed)  //Global initial value for bottom drawer starting with closed
-
-    @OptIn(ExperimentalMaterialApi::class)
-    val drawerState: LiveData<BottomDrawerValue> = _drawerState
-*/
-    @OptIn(ExperimentalMaterialApi::class)
-    private val _drawerState: LiveData<BottomDrawerState> = MutableLiveData(BottomDrawerState(BottomDrawerValue.Closed))
-
-    @OptIn(ExperimentalMaterialApi::class)
-    val drawerState: LiveData<BottomDrawerState> = _drawerState
-   /*
-    fun StateChangeDrawerViaCorotines():BottomDrawerState
+    fun handleSignIn(email:String = currentUsernameText.toString(), password:String = currentPasswordText.toString())
     {
-        println("PPPPPPPPPPPPPPPP")
-
-        return OpenCloseDrawer()
-    }
-*/
-
-
-
-    @OptIn(ExperimentalMaterialApi::class)
-    fun OpenCloseDrawer(state: BottomDrawerState):BottomDrawerValue
-    {
-        if(state == BottomDrawerState(BottomDrawerValue.Closed))
-        {
-            println("AHHHHHHHHHHHHHHHHH")
-            return BottomDrawerValue.Expanded
-        }
-        else
-        {
-            println("cccccccccccc")
-            return BottomDrawerValue.Expanded
-        }
+        auth = Firebase.auth
     }
 
+    fun handleSignUp(email:String = currentSignUpUsernameText.toString(), password:String = currentSignUpPasswordText.toString())
+    {
+        auth = Firebase.auth
+
+        val activity = LocalContext as Activity
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(activity) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "createUserWithEmail:success")
+                    val user = auth.currentUser
+                    updateUI(user)
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    println("Failed")
+                    updateUI(null)
+                }
+            }
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+
+    }
 }
+
+
+
+
+
 

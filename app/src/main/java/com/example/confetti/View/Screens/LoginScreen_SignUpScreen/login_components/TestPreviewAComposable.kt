@@ -146,7 +146,7 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
 {
     OutlinedButton(onClick = {
-       //TODO
+       loginSignUpViewModel.handleSignUp()
 
     }) {
         Text(text = "Sign Up")
