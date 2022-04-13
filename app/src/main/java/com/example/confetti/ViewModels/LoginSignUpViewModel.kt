@@ -1,20 +1,11 @@
 package com.example.confetti.ViewModels
 
-import android.app.Activity
-import android.content.ContentValues.TAG
-import android.util.Log
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class LoginSignUpViewModel: ViewModel() {
     // For the current Username
-    private lateinit var auth: FirebaseAuth
 
     private val _currentUsernameText:MutableLiveData<String> = MutableLiveData("") // When the view updates, it passes it here
     val currentUsernameText:LiveData<String> = _currentUsernameText // Act as the actual which copies the reference
@@ -52,35 +43,22 @@ class LoginSignUpViewModel: ViewModel() {
         _currentSignUpPasswordText.value = string
     }
 
-    fun handleSignIn(email:String = currentUsernameText.toString(), password:String = currentPasswordText.toString())
+    fun SignInUser(email:String = currentUsernameText.value.toString(), password:String = currentPasswordText.value.toString())
     {
-        auth = Firebase.auth
+        println("Sign in email and password variables are " + email.toString() + ". If this runs than nothing is wrong with prior code")
+        //LoginSignUpRepository().register(email,password)
     }
 
-    fun handleSignUp(email:String = currentSignUpUsernameText.toString(), password:String = currentSignUpPasswordText.toString())
+
+    fun SignUpUser()
     {
-        auth = Firebase.auth
-
-        val activity = LocalContext as Activity
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(activity) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    println("Failed")
-                    updateUI(null)
-                }
-            }
+        println("Current signUpUsername is " + currentSignUpUsernameText.value.toString()) // Outputs to terminal to verify view-model assignment success
+        //LoginSignUpRepository().register(email,password)
     }
 
-    private fun updateUI(user: FirebaseUser?) {
 
-    }
+
+
 }
 
 

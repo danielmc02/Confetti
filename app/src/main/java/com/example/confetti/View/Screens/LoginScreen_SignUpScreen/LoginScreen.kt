@@ -24,6 +24,7 @@ import com.example.confetti.R
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.SignUpScreen
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.LoginTextField
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.PasswordTextField
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignInButton
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
 import kotlinx.coroutines.launch
@@ -92,6 +93,7 @@ fun LoginScreen(modifier: Modifier, loginSignUpViewModel: LoginSignUpViewModel){
                                     append("Don't have an account?")
                                 }
                             })
+                            SignInButton(loginSignUpViewModel = loginSignUpViewModel)
 
 
 

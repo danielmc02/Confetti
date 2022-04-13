@@ -37,10 +37,10 @@ fun LoginTextField(loginSignUpViewModel: LoginSignUpViewModel){
         var text by remember { mutableStateOf("") } // Temporary state holder
         OutlinedTextField(modifier = Modifier.width(MinWidth),
             value = text,
-            onValueChange = { newText:String ->
+            onValueChange = { newText ->
                 text = newText // Assigning temporary state holder value
                 loginSignUpViewModel.updateUsernameReference(text) // Updates the actual text via view-model
-                println(loginSignUpViewModel.currentUsernameText.value.toString()) // Outputs to terminal to verify view-model assignment success
+                println("Current username is " + loginSignUpViewModel.currentUsernameText.value.toString()) // Outputs to terminal to verify view-model assignment success
             },
             shape = RoundedCornerShape(20.dp),
             maxLines = 1,
@@ -78,7 +78,8 @@ fun PasswordTextField(loginSignUpViewModel: LoginSignUpViewModel){
             onValueChange = { newText:String ->
                 text = newText // Assigning temporary state holder value
                 loginSignUpViewModel.updatePasswordReference(text) // Updates the actual text via view-model
-                println(loginSignUpViewModel.currentPasswordText.value.toString()) // Outputs to terminal to verify view-model assignment success
+                println("Current password is " + loginSignUpViewModel.currentPasswordText.value.toString()) // Outputs to terminal to verify view-model assignment success
+                // Outputs to terminal to verify view-model assignment success
             },
             shape = RoundedCornerShape(20.dp),
             maxLines = 1,
@@ -117,7 +118,7 @@ fun SignUpUsernameTextField(loginSignUpViewModel: LoginSignUpViewModel)
         onValueChange = { newText:String ->
         text = newText
         loginSignUpViewModel.updateSignUpUsernameText(text)
-        println(loginSignUpViewModel.currentSignUpUsernameText)
+            println("Current signUpUsername is " + loginSignUpViewModel.currentSignUpUsernameText.value.toString()) // Outputs to terminal to verify view-model assignment success
 
     },
         singleLine = true,
@@ -133,7 +134,7 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
         onValueChange = { newText:String ->
             text = newText
             loginSignUpViewModel.updateSignUpPasswordText(text)
-            println(loginSignUpViewModel.currentSignUpPasswordText)
+            println("Current signUpUsernamePassword is " + loginSignUpViewModel.currentSignUpPasswordText.value.toString()) // Outputs to terminal to verify view-model assignment success
 
         },
         singleLine = true,
@@ -141,15 +142,26 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 }
 
 
-@OptIn(ExperimentalMaterialApi::class)
+//@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
 {
     OutlinedButton(onClick = {
-       loginSignUpViewModel.handleSignUp()
+       loginSignUpViewModel.SignUpUser()
 
     }) {
         Text(text = "Sign Up")
     }
 }
 
+
+@Composable
+fun SignInButton(loginSignUpViewModel: LoginSignUpViewModel)
+{
+    OutlinedButton(onClick = {
+        loginSignUpViewModel.SignInUser()
+
+    }) {
+        Text(text = "Sign In")
+    }
+}
