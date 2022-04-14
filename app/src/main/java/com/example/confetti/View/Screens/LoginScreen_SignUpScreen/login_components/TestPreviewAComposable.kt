@@ -1,5 +1,6 @@
 package com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components
 
+import android.app.Activity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -147,8 +148,7 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
 {
     OutlinedButton(onClick = {
-       loginSignUpViewModel.SignUpUser()
-
+       loginSignUpViewModel.SignUpUser(loginSignUpViewModel.currentSignUpUsernameText.value.toString(),loginSignUpViewModel.currentSignUpPasswordText.value.toString())
     }) {
         Text(text = "Sign Up")
     }

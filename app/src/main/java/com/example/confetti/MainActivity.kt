@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
+
 @ExperimentalMaterialApi
 class MainActivity : ComponentActivity() { // The absolute beginning,
     private lateinit var auth: FirebaseAuth // Global variable to activity scope
