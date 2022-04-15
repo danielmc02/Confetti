@@ -1,10 +1,9 @@
 package com.example.confetti.ViewModels
 
 import android.app.Activity
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -58,19 +57,9 @@ class LoginSignUpViewModel: ViewModel() {
 
     fun SignUpUser(email: String, password: String , activity: Activity/*, loginSignUpViewModel: LoginSignUpViewModel */)
     {
-        println("Current signUpUsername is " + currentSignUpUsernameText.value.toString()) // Outputs to terminal to verify view-model assignment success
-        //LoginSignUpRepository().register(email,password)
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(activity) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    //updateUI(user)
-                } else {
+        currentSignUpUsernameText.observe(this, Observer {
 
-                }
-            }
+        })
 
     }
 

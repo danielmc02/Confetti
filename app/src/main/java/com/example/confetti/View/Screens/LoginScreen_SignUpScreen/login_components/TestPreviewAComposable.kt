@@ -1,6 +1,8 @@
 package com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components
 
-import android.app.Activity
+import android.content.Intent
+import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,11 +15,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import com.example.confetti.MainActivity
+import com.example.confetti.Model.SignUpLogin.LoginSignUpRepository
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
-
 
 @Preview
 @Composable
@@ -144,14 +150,27 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 
 
 //@OptIn(ExperimentalMaterialApi::class)
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
+fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel = LoginSignUpViewModel()) : ComponentActivity
 {
+
+    var context = LocalContext.current
+    var nav = Intent(context, LoginSignUpRepository::class.java)
+
     OutlinedButton(onClick = {
-       loginSignUpViewModel.SignUpUser(loginSignUpViewModel.currentSignUpUsernameText.value.toString(),loginSignUpViewModel.currentSignUpPasswordText.value.toString())
+             //context.startActivity(nav)
+
+        loginSignUpViewModel.currentSignUpUsernameText.observe(LifecycleOwner {  },)
+
+       //loginSignUpViewModel.SignUpUser(loginSignUpViewModel.currentSignUpUsernameText.value.toString(),loginSignUpViewModel.currentSignUpPasswordText.value.toString())
     }) {
         Text(text = "Sign Up")
     }
+}
+
+fun startActivity(otherActivity: Intent) {
+
 }
 
 
@@ -159,7 +178,7 @@ fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel)
 fun SignInButton(loginSignUpViewModel: LoginSignUpViewModel)
 {
     OutlinedButton(onClick = {
-        loginSignUpViewModel.SignInUser()
+        //loginSignUpViewModel.SignInUser()
 
     }) {
         Text(text = "Sign In")

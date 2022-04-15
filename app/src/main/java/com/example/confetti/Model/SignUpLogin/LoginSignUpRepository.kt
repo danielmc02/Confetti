@@ -1,10 +1,11 @@
 package com.example.confetti.Model.SignUpLogin
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginSignUpRepository: ComponentActivity(){
@@ -12,15 +13,18 @@ class LoginSignUpRepository: ComponentActivity(){
     private lateinit var auth: FirebaseAuth
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val model: LoginSignUpViewModel by viewModels()
         //Initialize Firebase
+        var email = model.currentSignUpUsernameText.observe(this, Observer { it ->   })//.toString()
+        var password = model.currentSignUpPasswordText.toString()
 
-    }
+        println("The email and password is $email and $password")
+        Log.i("Hello","The email and password is $email and $password")
 
-
-    fun register(email:String, password:String)
-    {
+        /*
 
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -36,7 +40,14 @@ class LoginSignUpRepository: ComponentActivity(){
                     //updateUI(null)
                 }
             }
+        */
     }
+
+
+
+
+
+
 
 
 
