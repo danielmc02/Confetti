@@ -58,7 +58,7 @@ class LoginSignUpViewModel: ViewModel() {
 
 
     @OptIn(ExperimentalMaterialApi::class)
-    fun SignUpUser(email: String, password: String, Context :ComponentActivity = MainActivity() /*, loginSignUpViewModel: LoginSignUpViewModel */)
+    fun SignUpUser(email: String = currentSignUpUsernameText.value.toString(), password: String = currentSignUpPasswordText.value.toString(), Context :ComponentActivity = MainActivity() /*, loginSignUpViewModel: LoginSignUpViewModel */)
     {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(Context) { task ->

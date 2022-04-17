@@ -156,7 +156,10 @@ fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel) {
 
     OutlinedButton(onClick = {
 
-        scope.launch { context.startActivity(nav) }
+        scope.launch {
+
+        loginSignUpViewModel.SignUpUser()}
+            //context.startActivity(nav) }
 
     }) {
         Text(text = "Sign Up")
