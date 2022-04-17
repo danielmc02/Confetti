@@ -22,9 +22,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.confetti.R
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.SignUpScreen
-import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.LoginTextField
-import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.PasswordTextField
-import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignInButton
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components.LoginTextField
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components.PasswordTextField
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components.SignInButton
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
 import kotlinx.coroutines.launch
@@ -36,12 +36,14 @@ val CustomFont = FontFamily(
 
 @ExperimentalMaterialApi
 @Composable
-fun LoginScreen(modifier: Modifier, loginSignUpViewModel: LoginSignUpViewModel){
+fun LoginScreen(modifier: Modifier, loginSignUpViewModel: LoginSignUpViewModel)
+{
+    val scope = rememberCoroutineScope()
+
 
     ConfettiTheme() {
-        val scope = rememberCoroutineScope()
         var drawerState = rememberBottomDrawerState(initialValue = BottomDrawerValue.Closed)
-            BottomDrawer(drawerState =  drawerState ,gesturesEnabled = false, drawerContent = { SignUpScreen(LoginSignUpViewModel(), drawerState = drawerState, scope = scope) })
+            BottomDrawer(drawerState =  drawerState ,gesturesEnabled = false, drawerContent = { SignUpScreen(loginSignUpViewModel, drawerState = drawerState, scope = scope) })
             {
                 Column(
 

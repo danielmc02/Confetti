@@ -1,8 +1,6 @@
-package com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components
+package com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components
 
 import android.content.Intent
-import androidx.activity.ComponentActivity
-import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,12 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import com.example.confetti.MainActivity
 import com.example.confetti.Model.SignUpLogin.LoginSignUpRepository
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
+import kotlinx.coroutines.launch
 
 @Preview
 @Composable
@@ -152,26 +148,21 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 //@OptIn(ExperimentalMaterialApi::class)
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel = LoginSignUpViewModel()) : ComponentActivity
-{
+fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel) {
 
+    var scope = rememberCoroutineScope()
     var context = LocalContext.current
     var nav = Intent(context, LoginSignUpRepository::class.java)
 
     OutlinedButton(onClick = {
-             //context.startActivity(nav)
 
-        loginSignUpViewModel.currentSignUpUsernameText.observe(LifecycleOwner {  },)
+        scope.launch { context.startActivity(nav) }
 
-       //loginSignUpViewModel.SignUpUser(loginSignUpViewModel.currentSignUpUsernameText.value.toString(),loginSignUpViewModel.currentSignUpPasswordText.value.toString())
     }) {
         Text(text = "Sign Up")
     }
 }
 
-fun startActivity(otherActivity: Intent) {
-
-}
 
 
 @Composable

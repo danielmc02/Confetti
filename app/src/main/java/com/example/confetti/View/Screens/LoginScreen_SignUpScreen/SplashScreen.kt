@@ -11,7 +11,7 @@ fun SplashScreen()
 {
     Column(modifier = Modifier
         .fillMaxSize()
-        .) {
+        ) {
 
     }
 }

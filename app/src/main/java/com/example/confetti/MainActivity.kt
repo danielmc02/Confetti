@@ -16,18 +16,16 @@ import com.google.firebase.ktx.Firebase
 
 @ExperimentalMaterialApi
 class MainActivity : ComponentActivity() { // The absolute beginning,
+
     private lateinit var auth: FirebaseAuth // Global variable to activity scope
-    val model: LoginSignUpViewModel by viewModels()
+    private val LoginSignUpViewModel: LoginSignUpViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) { // First Activity instance
         super.onCreate(savedInstanceState)
-
-
-
         setContent { //Sets the UI
             ConfettiTheme {
                 // A surface container using the 'background' color from the theme
-                MainScreen() //Uses navController to link all screen available for this activity
+                MainScreen(LoginSignUpViewModel) //Uses navController to link all screen available for this activity
 
             }
         }
@@ -46,10 +44,6 @@ class MainActivity : ComponentActivity() { // The absolute beginning,
                 startActivity(it)
             } // start the home page activity
         }
-      //  else // else continue the login/signup screen via onCreate
-        //{
-
-        //}
     }
 }
 

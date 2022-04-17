@@ -1,10 +1,12 @@
 package com.example.confetti.ViewModels
 
-import android.app.Activity
+import android.util.Log
+import androidx.activity.ComponentActivity
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import com.example.confetti.MainActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -55,11 +57,20 @@ class LoginSignUpViewModel: ViewModel() {
     }
 
 
-    fun SignUpUser(email: String, password: String , activity: Activity/*, loginSignUpViewModel: LoginSignUpViewModel */)
+    @OptIn(ExperimentalMaterialApi::class)
+    fun SignUpUser(email: String, password: String, Context :ComponentActivity = MainActivity() /*, loginSignUpViewModel: LoginSignUpViewModel */)
     {
-        currentSignUpUsernameText.observe(this, Observer {
-
-        })
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(Context) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.i("HELLO", "createUserWithEmail:success")
+                    val user = auth.currentUser
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.i("Hello", "createUserWithEmail:failure", task.exception)
+                }
+            }
 
     }
 

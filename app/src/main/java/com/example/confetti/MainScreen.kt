@@ -11,13 +11,13 @@ import com.example.confetti.ViewModels.LoginSignUpViewModel
 
 @ExperimentalMaterialApi
 @Composable
-fun MainScreen(){
+fun MainScreen(loginSignUpViewModel: LoginSignUpViewModel){
 
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "LoginScreen_SignUpScreen" ){
         composable("LoginScreen_SignUpScreen"){
-            LoginScreen(modifier = Modifier, LoginSignUpViewModel())
+            LoginScreen(modifier = Modifier, loginSignUpViewModel)
         }
     }
 }

@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignUpButton
-import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignUpPasswordTextField
-import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_components.SignUpUsernameTextField
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components.SignUpButton
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components.SignUpPasswordTextField
+import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components.SignUpUsernameTextField
 import com.example.confetti.View.Screens.LoginScreen_SignUpScreen.signup_components.TopAppBar
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
@@ -41,10 +41,10 @@ fun SignUpScreen(loginSignUpViewModel: LoginSignUpViewModel, drawerState: Bottom
                     modifier = Modifier
                         .weight(.8f)
                         .fillMaxWidth()) {
-                    SignUpUsernameTextField(LoginSignUpViewModel())
-                    SignUpPasswordTextField(LoginSignUpViewModel())
+                    SignUpUsernameTextField(loginSignUpViewModel)
+                    SignUpPasswordTextField(loginSignUpViewModel)
 
-                    SignUpButton(LoginSignUpViewModel())
+                    SignUpButton(loginSignUpViewModel)
                 }
 
             }
