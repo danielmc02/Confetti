@@ -11,7 +11,7 @@ import com.example.confetti.ViewModels.LoginSignUpViewModel
 
 @ExperimentalMaterialApi
 @Composable
-fun MainScreen(loginSignUpViewModel: LoginSignUpViewModel){
+fun LoginSignUpNav(loginSignUpViewModel: LoginSignUpViewModel){
 
     val navController = rememberNavController()
 

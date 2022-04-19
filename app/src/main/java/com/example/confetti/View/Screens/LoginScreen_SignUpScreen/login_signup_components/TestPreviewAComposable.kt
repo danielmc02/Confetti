@@ -1,7 +1,5 @@
 package com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components
 
-import android.content.Intent
-import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,11 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.confetti.MainActivity
-import com.example.confetti.Model.SignUpLogin.LoginSignUpRepository
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
 import kotlinx.coroutines.launch
@@ -159,7 +154,7 @@ fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel,) {
 
         scope.launch {
 
-        loginSignUpViewModel.SignInUser()
+        loginSignUpViewModel.SignUpUser()
         }
             //context.startActivity(nav) }
 
@@ -176,7 +171,7 @@ fun SignInButton(loginSignUpViewModel: LoginSignUpViewModel)
     var scope = rememberCoroutineScope()
 
     OutlinedButton(onClick = {
-        scope.launch { loginSignUpViewModel.SignUpUser() }
+        scope.launch { loginSignUpViewModel.SignInUser() }
 
     }) {
         Text(text = "Sign In")

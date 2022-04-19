@@ -1,12 +1,14 @@
-package com.example.confetti
+package com.example.confetti.Activities
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.material.ExperimentalMaterialApi
-import com.example.confetti.Activities.HomeActivity
+import com.example.confetti.LoginSignUpNav
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
 import com.google.firebase.auth.FirebaseAuth
@@ -20,13 +22,13 @@ class MainActivity : ComponentActivity() { // The absolute beginning,
     private lateinit var auth: FirebaseAuth // Global variable to activity scope
     private val LoginSignUpViewModel: LoginSignUpViewModel by viewModels()
 
-     .up.observe(this, nameObserver)
+
     override fun onCreate(savedInstanceState: Bundle?) { // First Activity instance
         super.onCreate(savedInstanceState)
         setContent { //Sets the UI
             ConfettiTheme {
                 // A surface container using the 'background' color from the theme
-                MainScreen(LoginSignUpViewModel) //Uses navController to link all screen available for this activity
+                LoginSignUpNav(LoginSignUpViewModel) //Uses navController to link all screen available for this activity
 
             }
         }
@@ -46,10 +48,13 @@ class MainActivity : ComponentActivity() { // The absolute beginning,
             } // start the home page activity
         }
     }
-    fun changeActivity()
+    fun ActivitySuccess()
     {
-        startActivity(Intent(this, HomeActivity::class.java))
+        val nav = Intent(this, HomeActivity::class.java)
+        startActivity(nav)
+        finish()
     }
-    liveData
+
+
 }
 
