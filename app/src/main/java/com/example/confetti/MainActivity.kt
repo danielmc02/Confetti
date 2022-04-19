@@ -16,10 +16,11 @@ import com.google.firebase.ktx.Firebase
 
 @ExperimentalMaterialApi
 class MainActivity : ComponentActivity() { // The absolute beginning,
-
+    var current = this
     private lateinit var auth: FirebaseAuth // Global variable to activity scope
     private val LoginSignUpViewModel: LoginSignUpViewModel by viewModels()
 
+     .up.observe(this, nameObserver)
     override fun onCreate(savedInstanceState: Bundle?) { // First Activity instance
         super.onCreate(savedInstanceState)
         setContent { //Sets the UI
@@ -45,5 +46,10 @@ class MainActivity : ComponentActivity() { // The absolute beginning,
             } // start the home page activity
         }
     }
+    fun changeActivity()
+    {
+        startActivity(Intent(this, HomeActivity::class.java))
+    }
+    liveData
 }
 

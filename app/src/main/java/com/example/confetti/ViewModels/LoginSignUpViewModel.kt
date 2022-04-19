@@ -1,14 +1,24 @@
 package com.example.confetti.ViewModels
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.confetti.Activities.HomeActivity
 import com.example.confetti.MainActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
+
 
 class LoginSignUpViewModel: ViewModel() {
     // For the current Username
@@ -50,22 +60,39 @@ class LoginSignUpViewModel: ViewModel() {
         _currentSignUpPasswordText.value = string
     }
 
-    fun SignInUser(email:String = currentUsernameText.value.toString(), password:String = currentPasswordText.value.toString())
+    @OptIn(ExperimentalMaterialApi::class)
+    fun SignInUser(email:String = currentUsernameText.value.toString(), password:String = currentPasswordText.value.toString(), CurrentActivity :ComponentActivity = MainActivity())
     {
-        println("Sign in email and password variables are " + email.toString() + ". If this runs than nothing is wrong with prior code")
-        //LoginSignUpRepository().register(email,password)
+
+        auth.createUserWithEmailAndPassword(email, password)
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(CurrentActivity) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.i("HELLO", "signInWithEmail:success")
+                    val user = auth.currentUser
+                    MainActivity().changeActivity()
+
+
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.i("HELLO", "signInWithEmail:failure", task.exception)
+
+                }
+            }
     }
 
-
     @OptIn(ExperimentalMaterialApi::class)
-    fun SignUpUser(email: String = currentSignUpUsernameText.value.toString(), password: String = currentSignUpPasswordText.value.toString(), Context :ComponentActivity = MainActivity() /*, loginSignUpViewModel: LoginSignUpViewModel */)
+    fun SignUpUser(email: String = currentSignUpUsernameText.value.toString(), password: String = currentSignUpPasswordText.value.toString(), CurrentActivity :ComponentActivity = MainActivity() /*, loginSignUpViewModel: LoginSignUpViewModel */)
     {
+
         auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(Context) { task ->
+            .addOnCompleteListener(CurrentActivity) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.i("HELLO", "createUserWithEmail:success")
                     val user = auth.currentUser
+                    MainActivity().changeActivity()
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.i("Hello", "createUserWithEmail:failure", task.exception)

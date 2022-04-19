@@ -1,6 +1,7 @@
 package com.example.confetti.View.Screens.LoginScreen_SignUpScreen.login_signup_components
 
 import android.content.Intent
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.confetti.MainActivity
 import com.example.confetti.Model.SignUpLogin.LoginSignUpRepository
 import com.example.confetti.ViewModels.LoginSignUpViewModel
 import com.example.confetti.ui.theme.ConfettiTheme
@@ -146,19 +148,19 @@ fun SignUpPasswordTextField(loginSignUpViewModel: LoginSignUpViewModel)
 
 
 //@OptIn(ExperimentalMaterialApi::class)
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel) {
+@OptIn(ExperimentalMaterialApi::class)
+fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel,) {
 
     var scope = rememberCoroutineScope()
-    var context = LocalContext.current
-    var nav = Intent(context, LoginSignUpRepository::class.java)
+
 
     OutlinedButton(onClick = {
 
         scope.launch {
 
-        loginSignUpViewModel.SignUpUser()}
+        loginSignUpViewModel.SignInUser()
+        }
             //context.startActivity(nav) }
 
     }) {
@@ -167,12 +169,14 @@ fun SignUpButton(loginSignUpViewModel: LoginSignUpViewModel) {
 }
 
 
-
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SignInButton(loginSignUpViewModel: LoginSignUpViewModel)
 {
+    var scope = rememberCoroutineScope()
+
     OutlinedButton(onClick = {
-        //loginSignUpViewModel.SignInUser()
+        scope.launch { loginSignUpViewModel.SignUpUser() }
 
     }) {
         Text(text = "Sign In")
